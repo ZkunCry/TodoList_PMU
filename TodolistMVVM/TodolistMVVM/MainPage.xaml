@@ -1,18 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:taskmodel="clr-namespace:TodolistMVVM.TaskModel"
+             xmlns:taskviewmodel="clr-namespace:TodolistMVVM.TaskViewModel"
+             x:DataType="taskviewmodel:TaskViewModel"
+
              x:Class="TodolistMVVM.MainPage">
 
     <StackLayout>
-        <Button Text="Добавить" Command="{Binding CreateTaskCommand}" />
-        <ListView x:Name="taskList" ItemsSource="{Binding Tasks}">
+        <Entry x:DataType="taskviewmodel:TaskViewModel"  Text="{Binding Texttask} "></Entry>
+        <Button x:DataType="taskviewmodel:TaskViewModel" Text="Добавить"   
+                Command="{Binding CreateTaskCommand}" CommandParameter="{Binding}"/>
+        <ListView x:DataType="taskviewmodel:TaskViewModel" x:Name="taskList"  ItemsSource="{Binding ListTasks}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout>
-                            <Label Text="{Binding TextTask}"></Label>
-                            <Label Text="{Binding isFinished}"></Label>
+                        <ViewCell.View>
+                            <StackLayout>
+                                <Label x:DataType="taskmodel:TaskModel" Text="{Binding TextTask}" ></Label>
+                                <Button Text="Удалить" BorderWidth="1" Command="{Binding DeleteTaskCommand}" ></Button>
                         </StackLayout>
+                        </ViewCell.View>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

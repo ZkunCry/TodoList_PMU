@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using TodolistMVVM;
 using System.Collections.ObjectModel;
 
 namespace TodolistMVVM
@@ -16,8 +15,8 @@ namespace TodolistMVVM
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = new TaskListView.TaskListView();
-           
+            BindingContext = new TaskViewModel.TaskViewModel();
+        
         }
     }
 }

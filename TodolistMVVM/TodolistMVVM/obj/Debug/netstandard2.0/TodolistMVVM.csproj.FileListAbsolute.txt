@@ -12,4 +12,3 @@ C:\Users\Eugene\source\repos\TodolistMVVM\TodolistMVVM\TodolistMVVM\obj\Debug\ne
 C:\Users\Eugene\source\repos\TodolistMVVM\TodolistMVVM\TodolistMVVM\obj\Debug\netstandard2.0\TodolistMVVM.dll
 C:\Users\Eugene\source\repos\TodolistMVVM\TodolistMVVM\TodolistMVVM\obj\Debug\netstandard2.0\ref\TodolistMVVM.dll
 C:\Users\Eugene\source\repos\TodolistMVVM\TodolistMVVM\TodolistMVVM\obj\Debug\netstandard2.0\TodolistMVVM.pdb
-C:\Users\Eugene\source\repos\TodolistMVVM\TodolistMVVM\TodolistMVVM\obj\Debug\netstandard2.0\TodolistMVVM.csproj.AssemblyReference.cache
