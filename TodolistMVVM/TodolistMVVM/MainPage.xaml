@@ -8,18 +8,29 @@
              x:Class="TodolistMVVM.MainPage">
 
     <StackLayout>
-        <Entry x:DataType="taskviewmodel:TaskViewModel"  Text="{Binding Texttask} "></Entry>
+        <Entry x:Name="entrytext" x:DataType="taskviewmodel:TaskViewModel" ></Entry>
         <Button x:DataType="taskviewmodel:TaskViewModel" Text="Добавить"   
-                Command="{Binding CreateTaskCommand}" CommandParameter="{Binding}"/>
+                Command="{Binding CreateTaskCommand}" CommandParameter="{Binding Source={Reference entrytext }, Path=Text}"/>
         <ListView x:DataType="taskviewmodel:TaskViewModel" x:Name="taskList"  ItemsSource="{Binding ListTasks}">
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="taskmodel:TaskModel">
                     <ViewCell>
                         <ViewCell.View>
-                            <StackLayout>
-                                <Label x:DataType="taskmodel:TaskModel" Text="{Binding TextTask}" ></Label>
-                                <Button Text="Удалить" BorderWidth="1" Command="{Binding DeleteTaskCommand}" ></Button>
-                        </StackLayout>
+                            <Grid ColumnSpacing="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" ></ColumnDefinition>
+                                    <ColumnDefinition Width="1*" ></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto" ></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <CheckBox Grid.Row="0" Grid.Column="0"></CheckBox>
+                                <Label Grid.Row="0" Grid.Column="1" x:DataType="taskmodel:TaskModel" Text="{Binding TextTask}" VerticalOptions="Center" Margin="5" ></Label>
+                                <Button Grid.Row="0" Grid.Column="2" Text="Удалить" BorderWidth="1" Command="{Binding DeleteTaskCommand,
+                                    Source={RelativeSource AncestorType={x:Type taskviewmodel:TaskViewModel}}}" 
+                                        CommandParameter="{Binding}" ></Button>
+                            </Grid>
                         </ViewCell.View>
                     </ViewCell>
                 </DataTemplate>

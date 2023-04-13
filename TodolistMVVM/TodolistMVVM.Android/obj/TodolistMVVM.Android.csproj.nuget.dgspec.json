@@ -1,26 +1,22 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Eugene\\source\\repos\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.Android\\TodolistMVVM.Android.csproj": {}
+    "C:\\todolistmvvm\\TodoList_PMU\\TodolistMVVM\\TodolistMVVM.Android\\TodolistMVVM.Android.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Eugene\\source\\repos\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.Android\\TodolistMVVM.Android.csproj": {
+    "C:\\todolistmvvm\\TodoList_PMU\\TodolistMVVM\\TodolistMVVM.Android\\TodolistMVVM.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eugene\\source\\repos\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.Android\\TodolistMVVM.Android.csproj",
+        "projectUniqueName": "C:\\todolistmvvm\\TodoList_PMU\\TodolistMVVM\\TodolistMVVM.Android\\TodolistMVVM.Android.csproj",
         "projectName": "TodolistMVVM.Android",
-        "projectPath": "C:\\Users\\Eugene\\source\\repos\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.Android\\TodolistMVVM.Android.csproj",
-        "packagesPath": "C:\\Users\\Eugene\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eugene\\source\\repos\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.Android\\obj\\",
+        "projectPath": "C:\\todolistmvvm\\TodoList_PMU\\TodolistMVVM\\TodolistMVVM.Android\\TodolistMVVM.Android.csproj",
+        "packagesPath": "C:\\Users\\aksen\\.nuget\\packages\\",
+        "outputPath": "C:\\todolistmvvm\\TodoList_PMU\\TodolistMVVM\\TodolistMVVM.Android\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Eugene\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\aksen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "monoandroid11.0"
@@ -32,8 +28,8 @@
         "frameworks": {
           "monoandroid11.0": {
             "projectReferences": {
-              "C:\\Users\\Eugene\\source\\repos\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.csproj": {
-                "projectPath": "C:\\Users\\Eugene\\source\\repos\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.csproj"
+              "C:\\todolistmvvm\\TodoList_PMU\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.csproj": {
+                "projectPath": "C:\\todolistmvvm\\TodoList_PMU\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.csproj"
               }
             }
           }
@@ -54,22 +50,18 @@
         }
       }
     },
-    "C:\\Users\\Eugene\\source\\repos\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.csproj": {
+    "C:\\todolistmvvm\\TodoList_PMU\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eugene\\source\\repos\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.csproj",
+        "projectUniqueName": "C:\\todolistmvvm\\TodoList_PMU\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.csproj",
         "projectName": "TodolistMVVM",
-        "projectPath": "C:\\Users\\Eugene\\source\\repos\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.csproj",
-        "packagesPath": "C:\\Users\\Eugene\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eugene\\source\\repos\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM\\obj\\",
+        "projectPath": "C:\\todolistmvvm\\TodoList_PMU\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.csproj",
+        "packagesPath": "C:\\Users\\aksen\\.nuget\\packages\\",
+        "outputPath": "C:\\todolistmvvm\\TodoList_PMU\\TodolistMVVM\\TodolistMVVM\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Eugene\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\aksen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
@@ -119,7 +111,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

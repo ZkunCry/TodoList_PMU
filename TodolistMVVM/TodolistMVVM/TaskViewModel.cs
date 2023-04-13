@@ -4,7 +4,6 @@ using System.Text;
 using System.ComponentModel;
 using System.Windows.Input;
 using TodolistMVVM.TaskModel;
-
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 
@@ -16,13 +15,14 @@ namespace TodolistMVVM.TaskViewModel
        
        public ICommand CreateTaskCommand {set; get; }
         public ICommand DeleteTaskCommand { set; get; }
-        public ObservableCollection<TaskModel.TaskModel> ListTasks { get; set; } = new ObservableCollection<TaskModel.TaskModel>();
+        public ObservableCollection<TaskModel.TaskModel> ListTasks { get; set; } = 
+            new ObservableCollection<TaskModel.TaskModel>();
         public TaskModel.TaskModel task;
         public TaskViewModel()
         {
             task = new TaskModel.TaskModel();
-            CreateTaskCommand = new Command(Createtask);
-            DeleteTaskCommand = new Command(DeleteTask);
+            CreateTaskCommand = new Command<string>(Createtask,(current)=>!string.IsNullOrEmpty(current));
+            DeleteTaskCommand = new Command<TaskModel.TaskModel>(DeleteTask);
         }
         public string Texttask
         {
@@ -42,14 +42,15 @@ namespace TodolistMVVM.TaskViewModel
             }
             
         }
-        private void Createtask()
+        
+        private void Createtask(string entrytext)
         {
-            ListTasks.Add(task);
+
+            ListTasks.Add(new TaskModel.TaskModel() { TextTask=entrytext,isFinished=false});
         }
-        private void DeleteTask(object CurrentTask)
+        private void DeleteTask(TaskModel.TaskModel CurrentTask)
         {
-            TaskModel.TaskModel Task = CurrentTask as TaskModel.TaskModel;
-            ListTasks.Remove(Task);
+            ListTasks.Remove(CurrentTask);
         }
         protected void OnPropertyChanged(string propName)
         {

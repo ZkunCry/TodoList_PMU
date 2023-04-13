@@ -7,6 +7,5 @@ namespace TodolistMVVM.TaskModel
     {
         public string TextTask { get; set; } //сама задача
         public bool isFinished { get; set; } //завершена ли она или нет
-
     }
 }
