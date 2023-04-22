@@ -2142,26 +2142,21 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Eugene\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\aksen\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Todolistmvvm\\TodolistMVVM\\TodolistMVVM.Android\\TodolistMVVM.Android.csproj",
+      "projectUniqueName": "C:\\todolistmvvm\\TodoList_PMU\\TodolistMVVM\\TodolistMVVM.Android\\TodolistMVVM.Android.csproj",
       "projectName": "TodolistMVVM.Android",
-      "projectPath": "C:\\Todolistmvvm\\TodolistMVVM\\TodolistMVVM.Android\\TodolistMVVM.Android.csproj",
-      "packagesPath": "C:\\Users\\Eugene\\.nuget\\packages\\",
-      "outputPath": "C:\\Todolistmvvm\\TodolistMVVM\\TodolistMVVM.Android\\obj\\",
+      "projectPath": "C:\\todolistmvvm\\TodoList_PMU\\TodolistMVVM\\TodolistMVVM.Android\\TodolistMVVM.Android.csproj",
+      "packagesPath": "C:\\Users\\aksen\\.nuget\\packages\\",
+      "outputPath": "C:\\todolistmvvm\\TodoList_PMU\\TodolistMVVM\\TodolistMVVM.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Eugene\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\aksen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "monoandroid11.0"
@@ -2173,8 +2168,8 @@
       "frameworks": {
         "monoandroid11.0": {
           "projectReferences": {
-            "C:\\Todolistmvvm\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.csproj": {
-              "projectPath": "C:\\Todolistmvvm\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.csproj"
+            "C:\\todolistmvvm\\TodoList_PMU\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.csproj": {
+              "projectPath": "C:\\todolistmvvm\\TodoList_PMU\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.csproj"
             }
           }
         }

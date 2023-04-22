@@ -16,9 +16,9 @@ namespace TodolistMVVM.TaskViewModel
        public ICommand CreateTaskCommand {set; get; }
         public ICommand DeleteTaskCommand { set; get; }
         public ICommand EditTaskCommand { get; set; }
-        public ICommand CompleteTaskCommand { get; set; }
         public ObservableCollection<TaskModel.TaskModel> ListTasks { get; set; } = 
             new ObservableCollection<TaskModel.TaskModel>();
+
         private TaskModel.TaskModel task;
         public TaskModel.TaskModel SelectedTask { 
             get
@@ -30,7 +30,8 @@ namespace TodolistMVVM.TaskViewModel
                 if(task !=value)
                 {
                     task = value;
-                    EditTask();
+                    if(task != null)
+                        EditTask();
                     OnPropertyChanged(nameof(SelectedTask));
                 }
             }
@@ -41,15 +42,8 @@ namespace TodolistMVVM.TaskViewModel
             task = new TaskModel.TaskModel();
             CreateTaskCommand = new Command<string>(Createtask,(current)=>!string.IsNullOrEmpty(current));
             DeleteTaskCommand = new Command<TaskModel.TaskModel>(DeleteTask);
-            CompleteTaskCommand = new Command<CheckBox>(CompleteTask);
             
         }
-        public void CompleteTask(CheckBox check)
-        {
-            if (!check.IsChecked)
-                check.IsChecked = true;
-        }
-
         public string Texttask
         {
             get=>task.TextTask;
@@ -59,7 +53,7 @@ namespace TodolistMVVM.TaskViewModel
                 OnPropertyChanged(nameof(Texttask));
             }
         }
-
+            
         public bool Finished { get => task.isFinished;
             set
             {
@@ -70,21 +64,43 @@ namespace TodolistMVVM.TaskViewModel
         
         private void Createtask(string entrytext)
         {
-            ListTasks.Add(new TaskModel.TaskModel() { TextTask=entrytext,isFinished=false});
+            int index= entrytext.IndexOf(':');
+            if(index >-1)
+            {
+                string lhs = entrytext.Substring(0, index);
+                string rhs = entrytext.Substring(index + 1);
+                rhs = rhs.Replace(':'.ToString(), String.Empty);
+                ListTasks.Add(new TaskModel.TaskModel() { TextTask = lhs, isFinished = false, CountElements = rhs });
+            }
+            else
+            {
+                ListTasks.Add(new TaskModel.TaskModel() { TextTask = entrytext, isFinished = false });
+            }
+           
+            
+
         }
         public async void EditTask()
         {
-            string text = await Application.Current.MainPage.DisplayPromptAsync("Редактирование", "Enter your new task", "OK", "Cancel",
-               "Input your task", initialValue: "Example", keyboard: Keyboard.Default);
-            if(!string.IsNullOrEmpty(text))
+            string text = await Application.Current.MainPage.DisplayPromptAsync("Редактирование","Текущая задача",initialValue:SelectedTask.TextTask);
+            if(string.IsNullOrWhiteSpace(text))
             {
-                int newIndex = ListTasks.IndexOf(SelectedTask);
-                ListTasks.Remove(SelectedTask);
-                task.TextTask = text;
-                ListTasks.Add(task);
-                int oldindex = ListTasks.IndexOf(task);
-                ListTasks.Move(oldindex, newIndex);
+              
+                if (text is null)
+                    SelectedTask = null;
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert(title: "Edit task", message: "Вы ничего не ввели", cancel: "Отмена");
+                    SelectedTask = null;
+                }
+                
             }
+            else
+            {
+                SelectedTask.TextTask = text;
+                SelectedTask = null;
+            }
+
         }
         private void DeleteTask(TaskModel.TaskModel CurrentTask)
         {

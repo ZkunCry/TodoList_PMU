@@ -21,15 +21,23 @@
                                     <ColumnDefinition Width="Auto" ></ColumnDefinition>
                                     <ColumnDefinition Width="1*" ></ColumnDefinition>
                                     <ColumnDefinition Width="Auto" ></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto" ></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions >
                                     <RowDefinition Height="Auto"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <CheckBox  Grid.Row="0" Grid.Column="0" x:Name="checkBox" ></CheckBox>
+                                
+                                <CheckBox  Grid.Row="0" Grid.Column="0" x:Name="checkBox" IsChecked="{Binding isFinished}">
+                                </CheckBox>
                                 <Label Grid.Row="0" Grid.Column="1" x:DataType="taskmodel:TaskModel"  Text="{Binding TextTask}" VerticalOptions="Center" Margin="5" FontSize="17" >
-                                   
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkBox},Path=IsChecked}" Value="true">
+                                            <Setter Property="TextColor" Value="Red"></Setter>
+                                        </DataTrigger>
+                                    </Label.Triggers>
                                 </Label>
-                                <Button Grid.Row="0" Grid.Column="2" Text="Удалить" BorderWidth="1" Command="{Binding DeleteTaskCommand,
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding CountElements}" VerticalOptions="Center" Margin="5" FontSize="17"></Label>
+                                <Button Grid.Row="0" Grid.Column="3" Text="Удалить" BorderWidth="1" Command="{Binding DeleteTaskCommand,
                                     Source={RelativeSource AncestorType={x:Type taskviewmodel:TaskViewModel}}}" 
                                         CommandParameter="{Binding}" ></Button>
                             </Grid>
