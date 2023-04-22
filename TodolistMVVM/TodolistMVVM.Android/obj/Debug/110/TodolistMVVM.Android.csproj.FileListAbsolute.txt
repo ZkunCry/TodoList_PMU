@@ -2310,3 +2310,4 @@ C:\TodoMVVM\TodoList_PMU\TodolistMVVM\TodolistMVVM.Android\obj\Debug\110\res\mip
 C:\TodoMVVM\TodoList_PMU\TodolistMVVM\TodolistMVVM.Android\obj\Debug\110\res\mipmap-xxxhdpi\trash.png
 C:\TodoMVVM\TodoList_PMU\TodolistMVVM\TodolistMVVM.Android\obj\Debug\110\res\drawable\trash.png
 C:\TodoMVVM\TodoList_PMU\TodolistMVVM\TodolistMVVM.Android\obj\Debug\110\res\drawable\add.png
+C:\TodoMVVM\TodoList_PMU\TodolistMVVM\TodolistMVVM.Android\obj\Debug\110\res\drawable\cats.jpg

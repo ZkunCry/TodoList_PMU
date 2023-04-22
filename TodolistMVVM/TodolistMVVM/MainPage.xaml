@@ -4,7 +4,7 @@
              xmlns:taskmodel="clr-namespace:TodolistMVVM.TaskModel"
              xmlns:taskviewmodel="clr-namespace:TodolistMVVM.TaskViewModel"
              x:DataType="taskviewmodel:TaskViewModel"
-
+             BackgroundColor="Bisque"
              x:Class="TodolistMVVM.MainPage">
 
     <StackLayout>
@@ -16,7 +16,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <Frame CornerRadius="8" HasShadow="True" BorderColor="Beige">
+            <Frame CornerRadius="8" HasShadow="True" BorderColor="Black" BackgroundColor="Cornsilk">
                 <Entry VerticalOptions="Center" Grid.Column="0" Grid.Row="0"  x:Name="entrytext" x:DataType="taskviewmodel:TaskViewModel" Placeholder="Product:count" ></Entry>
             </Frame>
             <ImageButton VerticalOptions="Center" Grid.Column="1" Grid.Row="0" Source="add.png" x:DataType="taskviewmodel:TaskViewModel"  BackgroundColor="Transparent" WidthRequest="60"
@@ -28,7 +28,8 @@
                 <DataTemplate x:DataType="taskmodel:TaskModel"  >
                     <ViewCell >
                         <ViewCell.View>
-                            <Grid ColumnSpacing="5" >
+                        
+                                <Grid ColumnSpacing="5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" ></ColumnDefinition>
                                     <ColumnDefinition Width="1*" ></ColumnDefinition>
@@ -56,6 +57,7 @@
                                 </ImageButton>
                                 
                             </Grid>
+                         
                         </ViewCell.View>
                     </ViewCell>
                 </DataTemplate>
