@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "VWzikbsiAOi2XANjW5ku0QU5g8xGhWpMRTk6KBQS3zKFeudkX3SPELWPVOgmzjAzjIU5lNnEsD7/dUUNWW4Yiw==",
+  "dgSpecHash": "/mJjKCr/GkUE9w0v7Bhy/qMAgsDTYomICgjW9w14725gjw2RBk4U5u+QdEL49BmFEdB7LFHpWk89cymOhxXK+Q==",
   "success": true,
-  "projectFilePath": "C:\\todolistmvvm\\TodoList_PMU\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.csproj",
+  "projectFilePath": "C:\\TodoMVVM\\TodoList_PMU\\TodolistMVVM\\TodolistMVVM\\TodolistMVVM.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\aksen\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\aksen\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
-    "C:\\Users\\aksen\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
-    "C:\\Users\\aksen\\.nuget\\packages\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
-    "C:\\Users\\aksen\\.nuget\\packages\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512"
+    "C:\\Users\\Eugene\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Eugene\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Eugene\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512"
   ],
   "logs": []
 }

@@ -42,9 +42,10 @@ namespace TodolistMVVM.TaskViewModel
             task = new TaskModel.TaskModel();
             CreateTaskCommand = new Command<string>(Createtask, (current) => 
             {
+
                 if(current!=null)
-                    return !string.IsNullOrEmpty(ParseString(current));
-                return !string.IsNullOrEmpty(current);
+                    return !string.IsNullOrEmpty(ParseString(current)[0]);
+                return false;
             }
             );
             DeleteTaskCommand = new Command<TaskModel.TaskModel>(DeleteTask);
@@ -69,20 +70,18 @@ namespace TodolistMVVM.TaskViewModel
         }
         private string[] ParseString(string current)
         {
-           int index = current.IndexOf(':');
+            int index = current.IndexOf(':');
             if (index > -1)
             {
                 string lhs = current.Substring(0, index);
                 if(string.IsNullOrWhiteSpace(lhs))
-                    return null;
+                    return new string[] { null,null };
                 string rhs = current.Substring(index + 1);
                 rhs = rhs.Replace(':'.ToString(), String.Empty);
                return new[] { lhs, rhs };
             }
             else
-            {
                 return new [] {current,null };
-            }
         }
         private void Createtask(string entrytext)
         {
@@ -97,25 +96,32 @@ namespace TodolistMVVM.TaskViewModel
         }
         public async void EditTask()
         {
-            string text = await Application.Current.MainPage.DisplayPromptAsync("Редактирование","Текущая задача",initialValue:SelectedTask.TextTask);
-            if(string.IsNullOrWhiteSpace(text))
+            if (!SelectedTask.isFinished)
             {
-                if (text is null)
-                    SelectedTask = null;
+                string text = await Application.Current.MainPage.DisplayPromptAsync("Редактирование", "Текущая задача", initialValue: SelectedTask.TextTask);
+                if (string.IsNullOrWhiteSpace(text))
+                {
+                    if (text is null)
+                        SelectedTask = null;
+                    else
+                    {
+                        await Application.Current.MainPage.DisplayAlert(title: "Edit task", message: "Вы ничего не ввели", cancel: "Отмена");
+                        SelectedTask = null;
+                    }
+
+                }
                 else
                 {
-                    await Application.Current.MainPage.DisplayAlert(title: "Edit task", message: "Вы ничего не ввели", cancel: "Отмена");
+                    var str = ParseString(text);
+                    if (str[0] != null)
+                        SelectedTask.TextTask = str[0];
+                    if (str[1] != null)
+                        SelectedTask.CountElements = str[1];
                     SelectedTask = null;
                 }
-                
             }
             else
-            {
-                var str = ParseString(text);
-                SelectedTask.TextTask = text;
                 SelectedTask = null;
-            }
-
         }
         private void DeleteTask(TaskModel.TaskModel CurrentTask)
         {
