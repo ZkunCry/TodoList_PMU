@@ -40,7 +40,13 @@ namespace TodolistMVVM.TaskViewModel
         public TaskViewModel()
         {
             task = new TaskModel.TaskModel();
-            CreateTaskCommand = new Command<string>(Createtask,(current)=>!string.IsNullOrEmpty(current));
+            CreateTaskCommand = new Command<string>(Createtask, (current) => 
+            {
+                if(current!=null)
+                    return !string.IsNullOrEmpty(ParseString(current));
+                return !string.IsNullOrEmpty(current);
+            }
+            );
             DeleteTaskCommand = new Command<TaskModel.TaskModel>(DeleteTask);
             
         }
@@ -61,31 +67,39 @@ namespace TodolistMVVM.TaskViewModel
                 OnPropertyChanged(nameof(Finished));
             }
         }
-        
-        private void Createtask(string entrytext)
+        private string[] ParseString(string current)
         {
-            int index= entrytext.IndexOf(':');
-            if(index >-1)
+           int index = current.IndexOf(':');
+            if (index > -1)
             {
-                string lhs = entrytext.Substring(0, index);
-                string rhs = entrytext.Substring(index + 1);
+                string lhs = current.Substring(0, index);
+                if(string.IsNullOrWhiteSpace(lhs))
+                    return null;
+                string rhs = current.Substring(index + 1);
                 rhs = rhs.Replace(':'.ToString(), String.Empty);
-                ListTasks.Add(new TaskModel.TaskModel() { TextTask = lhs, isFinished = false, CountElements = rhs });
+               return new[] { lhs, rhs };
             }
             else
             {
-                ListTasks.Add(new TaskModel.TaskModel() { TextTask = entrytext, isFinished = false });
+                return new [] {current,null };
             }
+        }
+        private void Createtask(string entrytext)
+        {
+            var result = ParseString(entrytext);
+            if (result == null)
+                return;
+            else if(string.IsNullOrEmpty(result[1]))
+                ListTasks.Add(new TaskModel.TaskModel() { TextTask = result[0], isFinished = false });
            
-            
-
+            else
+                ListTasks.Add(new TaskModel.TaskModel() { TextTask = result[0], isFinished = false, CountElements = result[1] });
         }
         public async void EditTask()
         {
             string text = await Application.Current.MainPage.DisplayPromptAsync("Редактирование","Текущая задача",initialValue:SelectedTask.TextTask);
             if(string.IsNullOrWhiteSpace(text))
             {
-              
                 if (text is null)
                     SelectedTask = null;
                 else
@@ -97,6 +111,7 @@ namespace TodolistMVVM.TaskViewModel
             }
             else
             {
+                var str = ParseString(text);
                 SelectedTask.TextTask = text;
                 SelectedTask = null;
             }
