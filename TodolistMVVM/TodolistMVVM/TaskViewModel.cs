@@ -9,22 +9,19 @@ using System.Collections.ObjectModel;
 
 namespace TodolistMVVM.TaskViewModel
 {
-    public class TaskViewModel:INotifyPropertyChanged 
+    public class TaskViewModel : INotifyPropertyChanged
     {
        public event PropertyChangedEventHandler PropertyChanged;
        
        public ICommand CreateTaskCommand {set; get; }
         public ICommand DeleteTaskCommand { set; get; }
         public ICommand EditTaskCommand { get; set; }
-        public ObservableCollection<TaskModel.TaskModel> ListTasks { get; set; } = 
+        public ObservableCollection<TaskModel.TaskModel> ListTasks { get; set; } =
             new ObservableCollection<TaskModel.TaskModel>();
 
         private TaskModel.TaskModel task;
         public TaskModel.TaskModel SelectedTask { 
-            get
-            {
-                return task;
-            }
+            get=> task;
             set
             {
                 if(task !=value)
@@ -40,14 +37,7 @@ namespace TodolistMVVM.TaskViewModel
         public TaskViewModel()
         {
             task = new TaskModel.TaskModel();
-            CreateTaskCommand = new Command<string>(Createtask, (current) => 
-            {
-
-                if(current!=null)
-                    return !string.IsNullOrEmpty(ParseString(current)[0]);
-                return false;
-            }
-            );
+            CreateTaskCommand = new Command<string>(Createtask, (current) =>  current != null ? !string.IsNullOrEmpty(ParseString(current)[0]) : false);
             DeleteTaskCommand = new Command<TaskModel.TaskModel>(DeleteTask);
             
         }
@@ -60,14 +50,7 @@ namespace TodolistMVVM.TaskViewModel
                 OnPropertyChanged(nameof(Texttask));
             }
         }
-            
-        public bool Finished { get => task.isFinished;
-            set
-            {
-                task.isFinished = value != false ? true : false;
-                OnPropertyChanged(nameof(Finished));
-            }
-        }
+
         private string[] ParseString(string current)
         {
             int index = current.IndexOf(':');
@@ -77,7 +60,7 @@ namespace TodolistMVVM.TaskViewModel
                 if(string.IsNullOrWhiteSpace(lhs))
                     return new string[] { null,null };
                 string rhs = current.Substring(index + 1);
-                rhs = rhs.Replace(':'.ToString(), String.Empty);
+                rhs = rhs.Replace(':'.ToString(), string.Empty);
                return new[] { lhs, rhs };
             }
             else
@@ -90,7 +73,6 @@ namespace TodolistMVVM.TaskViewModel
                 return;
             else if(string.IsNullOrEmpty(result[1]))
                 ListTasks.Add(new TaskModel.TaskModel() { TextTask = result[0], isFinished = false });
-           
             else
                 ListTasks.Add(new TaskModel.TaskModel() { TextTask = result[0], isFinished = false, CountElements = result[1] });
         }
@@ -98,14 +80,14 @@ namespace TodolistMVVM.TaskViewModel
         {
             if (!SelectedTask.isFinished)
             {
-                string text = await Application.Current.MainPage.DisplayPromptAsync("Редактирование", "Текущая задача", initialValue: SelectedTask.TextTask);
+                string text = await Application.Current.MainPage.DisplayPromptAsync("Editing", "Current task", initialValue: SelectedTask.TextTask);
                 if (string.IsNullOrWhiteSpace(text))
                 {
                     if (text is null)
                         SelectedTask = null;
                     else
                     {
-                        await Application.Current.MainPage.DisplayAlert(title: "Edit task", message: "Вы ничего не ввели", cancel: "Отмена");
+                        await Application.Current.MainPage.DisplayAlert(title: "Edit task", message: "You didn't enter anything", cancel: "Cancel");
                         SelectedTask = null;
                     }
 
@@ -123,10 +105,8 @@ namespace TodolistMVVM.TaskViewModel
             else
                 SelectedTask = null;
         }
-        private void DeleteTask(TaskModel.TaskModel CurrentTask)
-        {
-            ListTasks.Remove(CurrentTask);
-        }
+        private void DeleteTask(TaskModel.TaskModel CurrentTask)=>ListTasks.Remove(CurrentTask);
+
         protected void OnPropertyChanged(string propName)
         {
             if (PropertyChanged != null)

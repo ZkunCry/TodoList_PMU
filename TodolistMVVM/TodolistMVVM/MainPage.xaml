@@ -4,6 +4,7 @@
              xmlns:taskmodel="clr-namespace:TodolistMVVM.TaskModel"
              xmlns:taskviewmodel="clr-namespace:TodolistMVVM.TaskViewModel"
              x:DataType="taskviewmodel:TaskViewModel"
+  
              BackgroundColor="Bisque"
              x:Class="TodolistMVVM.MainPage">
 
@@ -17,13 +18,15 @@
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <Frame CornerRadius="8" HasShadow="True" BorderColor="Black" BackgroundColor="Cornsilk">
-                <Entry VerticalOptions="Center" Grid.Column="0" Grid.Row="0"  x:Name="entrytext" x:DataType="taskviewmodel:TaskViewModel" Placeholder="Product:count" ></Entry>
+                <Entry VerticalOptions="Center" Grid.Column="0" Grid.Row="0"  
+                       x:Name="entrytext" x:DataType="taskviewmodel:TaskViewModel" Placeholder="Product:count" ></Entry>
             </Frame>
-            <ImageButton VerticalOptions="Center" Grid.Column="1" Grid.Row="0" Source="add.png" x:DataType="taskviewmodel:TaskViewModel"  BackgroundColor="Transparent" WidthRequest="60"
+            <ImageButton VerticalOptions="Center" Grid.Column="1" Grid.Row="0" Source="add.png"  BackgroundColor="Transparent" WidthRequest="60"
                 Command="{Binding CreateTaskCommand}" CommandParameter="{Binding Source={Reference entrytext }, Path=Text}"/>
         </Grid>
         
-        <ListView x:DataType="taskviewmodel:TaskViewModel" x:Name="taskList"  SelectedItem="{Binding SelectedTask,Mode=TwoWay}" ItemsSource="{Binding ListTasks}" Margin="15,50,15,0" >
+        <ListView x:DataType="taskviewmodel:TaskViewModel" x:Name="taskList"  SelectedItem="{Binding SelectedTask,Mode=TwoWay}" 
+                  ItemsSource="{Binding ListTasks}" Margin="15,50,15,0" >
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="taskmodel:TaskModel"  >
                     <ViewCell >
@@ -43,7 +46,8 @@
                                     <CheckBox  Grid.Row="0" Grid.Column="0" x:Name="checkBox" IsChecked="{Binding isFinished}">
                                 </CheckBox>
                                 
-                                <Label Grid.Row="0" Grid.Column="1" x:DataType="taskmodel:TaskModel"  Text="{Binding TextTask}" VerticalOptions="Center" Margin="5" FontSize="17" TextColor="Black" >
+                                <Label Grid.Row="0" Grid.Column="1" x:DataType="taskmodel:TaskModel"  Text="{Binding TextTask}" 
+                                       VerticalOptions="Center" Margin="5" FontSize="17" TextColor="Black" >
                                     <Label.Triggers>
                                         <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkBox},Path=IsChecked}" Value="true">
                                             <Setter Property="TextColor" Value="Red"></Setter>
@@ -51,7 +55,8 @@
                                     </Label.Triggers>
                                 </Label>
                                 <Label Grid.Row="0" Grid.Column="2" Text="{Binding CountElements}" VerticalOptions="Center" Margin="5" FontSize="17" ></Label>
-                                <ImageButton VerticalOptions="Center" Source="trash.png" Grid.Row="0" Grid.Column="3" BackgroundColor="Transparent" WidthRequest="40" Command="{Binding DeleteTaskCommand,
+                                <ImageButton VerticalOptions="Center" Source="trash.png" Grid.Row="0" Grid.Column="3" 
+                                             BackgroundColor="Transparent" WidthRequest="40" Command="{Binding DeleteTaskCommand,
                                     Source={RelativeSource AncestorType={x:Type taskviewmodel:TaskViewModel}}}" 
                                         CommandParameter="{Binding}" >
                                 </ImageButton>
